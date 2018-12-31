@@ -44,6 +44,12 @@
   "provisioners": [{
       "type": "shell",
       "inline": [
+        "echo '** # Install packages via yum'",
+        "sudo yum -y install python-pip awslogs",
+        "echo '** # configure CloudWatch Agent'",
+        "sudo systemctl start awslogsd",
+        "sudo chkconfig awslogsd on",
+        "echo '** # Install ansible'",
         "sudo pip install ansible"
       ]
     },
