@@ -45,7 +45,7 @@
       "type": "shell",
       "inline": [
         "echo '** # Install packages via yum'",
-        "sudo yum -y install python-pip awslogs",
+        "sudo yum -y install python-pip awslogs git",
         "echo '** # configure CloudWatch Agent'",
         "sudo systemctl start awslogsd",
         "sudo chkconfig awslogsd on",
