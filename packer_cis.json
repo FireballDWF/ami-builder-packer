@@ -57,13 +57,13 @@
     },
     {
       "type": "file",
-      "source": "./selinux/amznlinux2.pp",
-      "destination": "./amznlinux2.pp"
+      "source": "./selinux/container.pp",
+      "destination": "./container.pp"
     },
     {
       "type": "shell",
       "inline": [
-        "sudo semodule -i amznlinux2.pp"
+        "sudo semodule -i container.pp"
       ]
     },
     {
