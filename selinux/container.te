@@ -1,0 +1,50 @@
+module docker 1.0;
+
+require {
+	type unlabeled_t;
+	type kernel_t;
+	type useradd_t;
+	type sendmail_t;
+    type file_t;
+	type iptables_t;
+    type ldconfig_t;
+	type cgconfig_t;
+	type chkpwd_t;
+	type user_devpts_t;
+	type initrc_var_run_t;
+	type auditctl_t;
+	class process getcap;
+	class system module_request;
+	class chr_file open;
+	class capability dac_read_search;
+	class file read;
+	class dir { getattr mounton };
+}
+
+#============= auditctl_t ==============
+allow auditctl_t self:process getcap;
+
+#============= cgconfig_t ==============
+allow cgconfig_t file_t:dir { getattr mounton };
+
+#============= chkpwd_t ==============
+allow chkpwd_t self:capability dac_read_search;
+
+#============= iptables_t ==============
+allow iptables_t unlabeled_t:file read;
+
+#============= ldconfig_t ==============
+allow ldconfig_t initrc_var_run_t:file read;
+
+#============= sendmail_t ==============
+#!!!! This avc can be allowed using the boolean 'domain_kernel_load_modules'
+
+allow sendmail_t kernel_t:system module_request;
+
+#============= shutdown_t ==============
+#!!!! This avc can be allowed using the boolean 'allow_daemons_use_tty'
+
+#allow shutdown_t user_devpts_t:chr_file open;
+
+#============= useradd_t ==============
+allow useradd_t self:capability dac_read_search;
