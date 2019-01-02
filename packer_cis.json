@@ -56,6 +56,17 @@
       ]
     },
     {
+      "type": "file",
+      "source": "./selinux/amznlinux2.pp",
+      "destination": "./amznlinux2.pp"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "sudo semodule -i amznlinux2.pp"
+      ]
+    },
+    {
       "type": "ansible-local",
       "playbook_file": "ansible/playbook.yaml",
       "role_paths": [
